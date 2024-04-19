@@ -2,8 +2,6 @@ import json
 import pandas as pd
 from typing import Dict, List
 from pythainlp.tokenize import word_tokenize
-# from datasets import load_dataset, load_metric, DatasetDict, Dataset, load_from_disk
-
 
 def __read_jsonlines(file_path: str) -> List[Dict]:
     with open(file_path, 'r', encoding='utf-8') as fp:

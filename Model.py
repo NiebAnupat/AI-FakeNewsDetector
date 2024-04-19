@@ -8,29 +8,21 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 def init_model():
     print("Training model....")
-    # Assuming loadData.load_data returns a list of dictionaries
     train_data = Data.load_data('./datasets/train_v1.jsonl')
-    # test_data = Data.load_data('./datasets/test_v1.jsonl')
     val_data = Data.load_data('./datasets/val_v1.jsonl')
 
     # Create a TF-IDF vectorizer
     vectorizer = TfidfVectorizer(ngram_range=(1, 2),
                                  min_df=3, max_df=0.9, strip_accents='unicode', use_idf=True,
                                  smooth_idf=True, sublinear_tf=True, lowercase=False)
-    # vectorizer = TfidfVectorizer(lowercase=False)
 
     train_data_df = pd.DataFrame(train_data)
-    # test_data_df = pd.DataFrame(test_data)
     val_data_df = pd.DataFrame(val_data)
 
     text_list = [" ".join(doc) for doc in train_data_df["Text"].tolist()]
     # Fit the vectorizer on the training data
     x_train = vectorizer.fit_transform(text_list)
     y_train = train_data_df["Document Tag"].tolist()
-
-    x_test = vectorizer.transform([" ".join(doc)
-                                  for doc in val_data_df["Text"].tolist()])
-    y_test = val_data_df["Document Tag"].tolist()
 
     svc = SVC()
     # Transform text data into numerical features
