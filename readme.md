@@ -42,7 +42,7 @@ response
     "prediction": "fake"
 }
 ```
-![alt text](./images/image.png)
+![alt text](./images/image1.png)
 
 get the model metrics by sending a get request to /metrics
 ![alt text](./images/image2.png)
