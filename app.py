@@ -39,7 +39,9 @@ def predict_by_text(text):
     tokens = Data.preprocess_data(text)
     x_new = vectorizer.transform([" ".join(tokens)])
     y_new = model.predict(x_new)
-    return y_new.tolist()[0]
+    return {
+        "predicted_label": y_new.tolist()[0],
+    }
 
 
 if __name__ == "__main__":
