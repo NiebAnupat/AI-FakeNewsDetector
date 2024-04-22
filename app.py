@@ -4,13 +4,14 @@ import Data
 import OCRThai
 from flask import Flask, request
 from dotenv import load_dotenv
-
+from flask_cors import CORS
 load_dotenv()
 port = os.getenv("PORT")
 if port is None:
     port = 5000
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/")
@@ -46,4 +47,4 @@ def predict_by_text(text):
 
 if __name__ == "__main__":
     vectorizer, model = Model.load_model()
-    app.run(port=port, debug=True)
+    app.run(port=port)

@@ -1,6 +1,9 @@
+pandas
+deepcut
 flask
+flask-cors
 python-dotenv
-sklearn
+scikit-learn
 pytesseract
 pythainlp
 tensorflow
